@@ -856,7 +856,7 @@ const navPublic = (current) =>
   `<header class=top><div class=stripe></div><nav class=nav aria-label=Main><a class=brand href=/ aria-label="MailAPI home">${MARK}<span>Mail<b>API</b></span></a><div class=nav-links><a href=/docs${current === "docs" ? " aria-current=page" : ""}>Docs</a><a id=navcta class="btn btn-p" href=/auth/login>Sign in</a></div></nav></header><script>if(/mailapi=1/.test(document.cookie)){var c=document.getElementById("navcta");c.href="/dashboard";c.textContent="Dashboard"}</script>`;
 const navApp = (email) =>
   `<header class=top><div class=stripe></div><nav class=nav aria-label=Main><a class=brand href=/dashboard aria-label="MailAPI dashboard">${MARK}<span>Mail<b>API</b></span></a><div class=nav-links><a href=/docs>Docs</a><span class=who title="Signed in as">${esc(email)}</span><button id=logout class=btn type=button>Sign out</button></div></nav></header>`;
-const footer = `<footer class=foot><div class=foot-in><a href=/>MailAPI</a><a href=/docs>Docs</a><a href=/privacy>Privacy</a><a href=/terms>Terms</a><span class=sp>Gmail API · Cloudflare Workers</span></div></footer>`;
+const footer = `<footer class=foot><div class=foot-in><a href=/>MailAPI</a><a href=/docs>Docs</a><a href=/privacy>Privacy</a><a href=/terms>Terms</a><a href=https://github.com/nullstacks/mailapi rel="noopener">GitHub</a><span class=sp>Gmail API · Cloudflare Workers</span></div></footer>`;
 
 const STATIC_HEADERS = { "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=300, stale-while-revalidate=86400", ...SEC };
 const staticPage = (html) => new Response(html, { headers: STATIC_HEADERS });
@@ -904,7 +904,7 @@ function homePage(origin) {
     <h1>Your Gmail,<br>as a REST&nbsp;API.</h1>
     <p class=lead>Sign in with Google and get a personal key to read, search and send your own mail from any script. Disposable aliases are built in: one inbox, unlimited addresses, one endpoint that works out the rest.</p>
     <div class=cta><a class="btn btn-w btn-lg" href=/auth/login>${GLOGO} Sign in with Google</a><a class="btn btn-gw btn-lg" href=/docs>Read the docs</a></div>
-    <p class=fine>Works with any Gmail address · tokens encrypted at rest · revoke anytime</p>
+    <p class=fine>Works with any Gmail address · tokens encrypted at rest · revoke anytime · <a href=https://github.com/nullstacks/mailapi rel=noopener style="color:inherit">open source</a></p>
   </div>
   <figure class=env><div class=env-in data-tabs>
     <div class=tabs role=tablist aria-label="Example requests">
@@ -937,6 +937,7 @@ function homePage(origin) {
     <div><dt>Disposable aliases</dt><dd>+tag and dot aliases are free temp addresses. Pass one as <code>email</code> and only its mail comes back.</dd></div>
     <div><dt>Auto-detected addresses</dt><dd>One <code>email</code> parameter for everything: a plain address returns its inbox, an alias returns just that alias. No separate endpoint.</dd></div>
     <div><dt>Fast and serverless</dt><dd>Runs on Cloudflare Workers at the edge. No servers to manage, nothing to maintain.</dd></div>
+    <div><dt>Open source</dt><dd>The whole project is open source. Read the code, self-host it on your own Cloudflare account, or send a pull request on <a href=https://github.com/nullstacks/mailapi rel=noopener>GitHub</a>.</dd></div>
     <div><dt>Zero lock-in</dt><dd>Delete your account in one click. Google access is revoked and all stored data wiped instantly.</dd></div>
   </dl>
 </section>
@@ -975,7 +976,7 @@ function docsPage(origin) {
 <article class=doc>
 <section id=auth>
   <h1>MailAPI reference</h1>
-  <p class=muted>Base URL ${c(origin)}. All responses are JSON.</p>
+  <p class=muted>Base URL ${c(origin)}. All responses are JSON. MailAPI is open source: <a href=https://github.com/nullstacks/mailapi rel=noopener>github.com/nullstacks/mailapi</a>.</p>
   <h2>Authentication</h2>
   <p>Send your key as ${c("Authorization: Bearer YOUR_KEY")} (or the ${c("X-API-Key")} header). Sign in at <a href=/auth/login>/auth/login</a>; the dashboard shows your ${c("gmk_…")} key. One key works for every linked account.</p>
 </section>
