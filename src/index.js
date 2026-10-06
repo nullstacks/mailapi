@@ -117,6 +117,16 @@ async function issueApiKey(env, user) {
   return key;
 }
 
+// Read the stored API-key copy; if it was written under a different ENCRYPTION_KEY
+// (key rotation, namespace migration) it cannot authenticate — re-issue instead of failing.
+async function readApiKey(env, user) {
+  try {
+    return await decrypt(env, user.api_key_enc);
+  } catch {
+    return issueApiKey(env, user);
+  }
+}
+
 async function resolveKeyPrincipal(req, env) {
   const h = req.headers.get("authorization") || "";
   const key = h.toLowerCase().startsWith("bearer ") ? h.slice(7).trim() : req.headers.get("x-api-key");
@@ -1220,7 +1230,7 @@ export default {
         const user = await session(req, env);
         if (!user) return new Response(null, { status: 302, headers: (() => { const h = clearedHeaders(); h.set("location", "/"); return h; })() });
         const flash = url.searchParams.get("linked") ? { linked: url.searchParams.get("linked") } : url.searchParams.get("relinked") ? { relinked: true } : null;
-        return privatePage(dashboardPage(user, url.origin, await decrypt(env, user.api_key_enc), flash));
+        return privatePage(dashboardPage(user, url.origin, await readApiKey(env, user), flash));
       }
       if (pathname === "/auth/login") return login(req, url, env);
       if (pathname === "/auth/callback") return callback(req, url, env);

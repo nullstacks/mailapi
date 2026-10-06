@@ -2,10 +2,10 @@ name = "mailapi"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 
-# Created 2026-10-06 — bindings: KV
+# Created 2026-10-07 — dedicated namespace for this worker (isolated from the old gmail-api worker's data)
 [[kv_namespaces]]
 binding = "KV"
-id = "cca725bfa8234126926c6fb7f1fcf6cd"
+id = "98a6fd4dcd5444d7a7d4e340dc190ddf"
 
 # Optional: override scopes (space separated)
 # [vars]
