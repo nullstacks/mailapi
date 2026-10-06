@@ -1,0 +1,17 @@
+name = "mailapi"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Created 2026-10-06 — bindings: KV
+[[kv_namespaces]]
+binding = "KV"
+id = "cca725bfa8234126926c6fb7f1fcf6cd"
+
+# Optional: override scopes (space separated)
+# [vars]
+# SCOPES = "openid email https://www.googleapis.com/auth/gmail.readonly"
+
+# Secrets (set with `npx wrangler secret put NAME`):
+#   GOOGLE_CLIENT_ID
+#   GOOGLE_CLIENT_SECRET
+#   ENCRYPTION_KEY   (any long random string; encrypts refresh tokens in KV)

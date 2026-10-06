@@ -1,0 +1,11 @@
+# secrets, local state
+.wrangler/
+.dev.vars
+*.log
+
+# deps
+node_modules/
+
+# os / editor
+.DS_Store
+Thumbs.db

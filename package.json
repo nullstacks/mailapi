@@ -1,0 +1,29 @@
+{
+  "name": "mailapi",
+  "version": "1.0.0",
+  "description": "Your Gmail, as a REST API — Google OAuth + per-user API keys on Cloudflare Workers + KV. Multi-account, disposable +tag aliases, one key.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "check": "node --check src/index.js"
+  },
+  "keywords": [
+    "gmail",
+    "email-api",
+    "cloudflare-workers",
+    "oauth2",
+    "rest-api",
+    "temporary-email",
+    "disposable-email"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "wrangler": "^4.148.0"
+  }
+}
