@@ -50,6 +50,18 @@ curl -X POST "$BASE/v1/messages/send" \
 
 ## Deploy your own
 
+[![Deploy to Cloudflare Workers](https://img.shields.io/badge/Deploy_to_Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://deploy.workers.cloudflare.com/?url=https://github.com/nullstacks/mailapi)
+
+**One-click deploy:** the button opens Cloudflare's deploy flow — it clones the repo, creates the KV namespace, wires the binding, and publishes the Worker to your account. After it finishes:
+
+1. In your Cloudflare dashboard → **Workers & Pages → mailapi → Settings → Variables and Secrets**, add:
+   - `ENCRYPTION_KEY` — any long random string (`openssl rand -hex 32`)
+   - `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` — your OAuth client (step 2 below)
+2. Do the Google Cloud Console setup (step 2 below) using your new Worker URL
+3. Open the Worker URL, sign in, take your key
+
+Or deploy from the terminal:
+
 ### 1. Cloudflare Worker
 
 ```bash
