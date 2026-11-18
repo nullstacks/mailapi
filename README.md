@@ -1,5 +1,9 @@
 # MailAPI
 
+**[▶ Watch the 26-second launch video](docs/media/launch.mp4)**
+
+[![MailAPI — launch video](docs/media/poster.jpg)](docs/media/launch.mp4)
+
 **Your Gmail, as a REST API.** Sign in with Google, get a personal API key, and read / search / send your own mailbox over plain JSON — from any script, cron job, or AI agent. Runs entirely on [Cloudflare Workers](https://workers.cloudflare.com) + Workers KV. No servers, no SDK, no database.
 
 One key reaches **every linked Gmail account at once**, and Gmail's `+tag` / dot aliases become **free disposable addresses** — pass any address as `email` and the API auto-detects it: a linked account returns its whole inbox, an alias returns only mail addressed to that alias.
